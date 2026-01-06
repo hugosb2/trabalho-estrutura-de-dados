@@ -1,20 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package trabalho.estrutura.de.dados;
-
-/**
- *
- * @author Hugo Barros
- */
+import javax.swing.JOptionPane;
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        
+        //Main para testar classe livro
+        
+        String nome = JOptionPane.showInputDialog("Digite o título do livro");
+        String genero = JOptionPane.showInputDialog("Digite o gênero do livro");
+        int numpagina = Integer.parseInt(JOptionPane.showInputDialog("Digite o número de páginas"));
+        
+        Livro l1 = new Livro(nome, genero, numpagina);
+        
+        
+        
+        
+        JOptionPane.showMessageDialog(null, l1.toString());
+        
     }
     
 }
