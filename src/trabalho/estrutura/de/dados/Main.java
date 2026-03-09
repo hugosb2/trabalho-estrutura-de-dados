@@ -1,5 +1,6 @@
 package trabalho.estrutura.de.dados;
 import javax.swing.JOptionPane;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Main {
@@ -19,6 +20,7 @@ public class Main {
             System.out.println("2 - Excluir livro (remover ultima ocorrencia)");
             System.out.println("3 - Listar livros");
             System.out.println("4 - Inserir lista de livros em uma fila ");
+            System.out.println("5 - Criar PILHAS de livros do mesmo gênero literário  ");
             System.out.println("0 - Sair");
             System.out.print("Escolha uma opcao: ");
             opcao = scanner.nextInt();
@@ -61,7 +63,36 @@ public class Main {
                         fila.imprimirFila();
                     }
                     break;
+                case 5:
+                    if (livros.vazia()) {
+                        System.out.println("Lista vazia!");
+                        break;
+                    }
 
+                    LinkedList<Pilha> pilhalivro = new LinkedList<>();
+
+                    for (Livro l : livros.getObjetos()) {
+                        boolean adiciona=false;
+
+                        for (Pilha p : pilhalivro){
+
+                            Livro primeiro = p.getObjetos().get(0);
+                            if(primeiro.getGenero().equalsIgnoreCase(l.getGenero())){
+                                p.adiciona(l);
+                                adiciona=true;
+                                break;
+                            }
+                        }
+                        if(!adiciona){
+                            Pilha nova= new Pilha();
+                            nova.adiciona(l);
+                            pilhalivro.add(nova);
+                        }
+                    }
+                    for (Pilha p : pilhalivro) {
+                        System.out.println(p.toString());
+                    }
+                    break;
                 case 0:
                     System.out.println("Encerrando o programa...");
                     break;
