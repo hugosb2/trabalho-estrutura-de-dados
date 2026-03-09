@@ -9,8 +9,8 @@ public class Livro {
         this.genero = genero;
         this.numPagina = numPagina;
     }
-    
-    
+
+
 
     public String getTitulo() {
         return titulo;
@@ -40,8 +40,7 @@ public class Livro {
     public String toString() {
         return this.titulo + " - " + this.genero + " - "+ this.numPagina;
     }
-    
-    
-    
-    
+
+
+
 }
