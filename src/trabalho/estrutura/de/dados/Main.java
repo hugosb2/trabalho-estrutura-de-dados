@@ -150,7 +150,8 @@ public class Main {
                 // ===== QUESTAO 7: Salvar Lista usando ObjectOutputStream =====
                 case 7:
                     salvarDados(livros);
-                    System.out.println("Lista salva com sucesso no arquivo: " + ARQUIVO_DADOS);
+                    SalvaArquivo sa = new SalvaArquivo();
+                    System.out.println("Lista salva com sucesso no arquivo: " + sa.getArquivoDados());
                     break;
 
                 // ===== QUESTAO 8: Criar indice invertido =====

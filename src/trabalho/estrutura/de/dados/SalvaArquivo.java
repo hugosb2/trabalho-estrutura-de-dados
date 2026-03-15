@@ -1,47 +1,47 @@
 package trabalho.estrutura.de.dados;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.util.LinkedList;
 
 public class SalvaArquivo {
     
-    private static final String ARQUIVO_DADOS = "src/trabalho/estrutura/de/dados/livros.dat";
+    private static final String ARQUIVO_DADOS = "src/trabalho/estrutura/de/dados/livros.txt";
+    
+    public String getArquivoDados() {
+        return ARQUIVO_DADOS;
+    }
     
     public void grava(Object ob) {
-        try { 
-            File arquivo = new File(ARQUIVO_DADOS);  //local arquivo
-            
-            //Vincula objeto de gravacao arquivo
-            ObjectOutputStream grava = new ObjectOutputStream(new FileOutputStream(arquivo));  
-            
-            grava.writeObject(ob);       //Efetua gravacao arquivo
-            
-            grava.close();               //Fecha objeto de gravacao
+        try (PrintWriter writer = new PrintWriter(new FileWriter(ARQUIVO_DADOS))) {
+            LinkedList<Livro> livros = (LinkedList<Livro>) ob;
+            for (Livro livro : livros) {
+                writer.println(livro.getTitulo() + ";" + livro.getGenero() + ";" + livro.getPaginas());
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
     
     public Object ler() {
-        Object retorno = null;
+        LinkedList<Livro> retorno = new LinkedList<>();
         
-        try {
-            File arquivo = new File(ARQUIVO_DADOS);  //local arquivo
-            
-            //Vincula objeto de leitura arquivo
-            ObjectInputStream ler = new ObjectInputStream(new FileInputStream(arquivo));  
-            
-            Object obj = (Object) ler.readObject();  //Efetua leitura arquivo
-            if (obj != null)
-                retorno = obj;         //Seta retorno
-
-            ler.close();           //Fecha objeto leitura
-            
-        } catch (IOException | ClassNotFoundException e) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(ARQUIVO_DADOS))) {
+            String linha;
+            while ((linha = reader.readLine()) != null) {
+                String[] partes = linha.split(";");
+                if (partes.length == 3) {
+                    String titulo = partes[0];
+                    String genero = partes[1];
+                    int paginas = Integer.parseInt(partes[2]);
+                    retorno.add(new Livro(titulo, genero, paginas));
+                }
+            }
+        } catch (IOException e) {
             e.printStackTrace();
         } 
         
