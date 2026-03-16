@@ -14,7 +14,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Lista<Livro> livros = new Lista<>();
+        Lista livros = new Lista();
         Fila fila = new Fila();
         Scanner scanner = new Scanner(System.in);
 
@@ -177,13 +177,13 @@ public class Main {
     }
 
     // ===== QUESTAO 7: Salvar lista usando SalvaArquivo =====
-    private static void salvarDados(Lista<Livro> livros) {
+    private static void salvarDados(Lista livros) {
         SalvaArquivo sa = new SalvaArquivo();
         sa.grava(livros.getObjetos());
     }
 
     // ===== QUESTAO 7: Carregar dados usando SalvaArquivo =====
-    private static void carregarDados(Lista<Livro> livros) {
+    private static void carregarDados(Lista  livros) {
         try {
             SalvaArquivo sa = new SalvaArquivo();
             Object conteudo = sa.ler();
@@ -202,7 +202,7 @@ public class Main {
     }
 
     // ===== QUESTAO 8: Criar indice invertido =====
-    private static void criarIndiceInvertido(Lista<Livro> livros, String nomeArquivo) {
+    private static void criarIndiceInvertido(Lista livros, String nomeArquivo) {
         // Primeiro, verificar se o arquivo existe e ler os titulos
         Map<String, Integer> contagemTitulos = new HashMap<>();
 

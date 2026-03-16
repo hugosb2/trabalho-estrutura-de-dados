@@ -2,7 +2,7 @@ package trabalho.estrutura.de.dados;
 
 import java.util.LinkedList;
 
-public class Lista<T> {
+public class Lista {
 
 
     private LinkedList<Livro> objetos;

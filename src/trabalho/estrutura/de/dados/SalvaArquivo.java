@@ -10,7 +10,7 @@ import java.util.LinkedList;
 
 public class SalvaArquivo {
     
-    private static final String ARQUIVO_DADOS = "src/livros.txt";
+    private static final String ARQUIVO_DADOS = "livros.txt";
     
     public String getArquivoDados() {
         return ARQUIVO_DADOS;
