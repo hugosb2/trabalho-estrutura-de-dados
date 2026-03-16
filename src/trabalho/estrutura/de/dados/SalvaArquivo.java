@@ -10,7 +10,7 @@ import java.util.LinkedList;
 
 public class SalvaArquivo {
     
-    private static final String ARQUIVO_DADOS = "src/trabalho/estrutura/de/dados/livros.txt";
+    private static final String ARQUIVO_DADOS = "src/livros.txt";
     
     public String getArquivoDados() {
         return ARQUIVO_DADOS;
@@ -20,7 +20,7 @@ public class SalvaArquivo {
         try (PrintWriter writer = new PrintWriter(new FileWriter(ARQUIVO_DADOS))) {
             LinkedList<Livro> livros = (LinkedList<Livro>) ob;
             for (Livro livro : livros) {
-                writer.println(livro.getTitulo() + ";" + livro.getGenero() + ";" + livro.getPaginas());
+                writer.println(livro.getTitulo() + ";" + livro.getGenero() + ";" + livro.getNumPagina());
             }
         } catch (IOException e) {
             e.printStackTrace();
